@@ -6,12 +6,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-	
+
 	<mvc:annotation-driven />
-	
 	<!-- 스프링에서 처리 불가능한 리소스(정적인자료:css ,js)를 was의 default servlet으로 전달한다. -->
 	<mvc:default-servlet-handler/>
-	
 	<context:annotation-config/>
 	
 		<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
@@ -24,5 +22,4 @@
 			<property name="suffix" value=".jsp"></property>
 		</bean>
 		<!-- hello : /WEB-INF/view/hello.jsp -->
-	
 </beans>
