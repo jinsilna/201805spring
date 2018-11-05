@@ -21,7 +21,8 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:kr/or/ddit/config/spring/servlet-context.xml"})
+@ContextConfiguration(locations={"classpath:kr/or/ddit/config/spring/servlet-context.xml",
+								"classpath:kr/or/ddit/config/spring/root-context.xml"})
 @WebAppConfiguration      
 public class MvcControllerTest {
 
@@ -59,8 +60,6 @@ public class MvcControllerTest {
 		// model 객체에서 rangers 리스트 속성을 받아 사이즈가 3인지 체크하기 
 		assertEquals(4, rangers.size());
 		
-		
-		
 	}
 	
 	@Test
@@ -79,10 +78,19 @@ public class MvcControllerTest {
 		// model 객체에서 rangers 리스트 속성을 받아 사이즈가 3인지 체크하기 
 		assertEquals(3, rangers.size());
 		
-		
-		
 	}
+	@Test
+	public void fileuploadTest() throws Exception {
+		/***Given***/
+		MvcResult mvcResult = mockMvc.perform(get("/mvc/fileupload")).andReturn();
 
+		/***When***/
+		ModelAndView mav = mvcResult.getModelAndView();
+
+		/***Then***/
+		assertEquals("mvc/fileuploadView", mav.getViewName());
+	
+	}
 }
 
 
