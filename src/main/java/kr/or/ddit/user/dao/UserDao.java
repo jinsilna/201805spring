@@ -10,8 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
-@Repository 
+@Repository
 public class UserDao implements UserDaoInf{
+		
 	// jspuser 테이블 데이터 전체 조회 
 	// Map이 아니고 List로 
 	public List<UserVo> selectUserAll(){

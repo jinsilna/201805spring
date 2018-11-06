@@ -12,11 +12,12 @@
 	* 기본필터(controller, service, dao, component)를 끄고 우리가 스캔하고자하는 service, dao에 대해서만 
 		  스캔하도록 include-filter를 이용하여 설정한다. -->
 		<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
-			<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 			<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		</context:component-scan>
 	<!-- user-default-filter="false" : 기본필터를 사용하지않겠다. -->
 
+	<bean id="userDao" class="kr.or.ddit.user.dao.UserDao"/>
 	
 	<!-- * 위와 다르게 *  
 	<context:component-scan base-package="kr.or.ddit">

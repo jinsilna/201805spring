@@ -15,15 +15,14 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
 // service, dao에 대한 설정파일만 필요하다.
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"classpath:kr/or/ddit/config/spring/root-context.xml"})
-
 public class ServiceDaoConfig {
 	
 	@Ignore   // 불필요한 파일을 skip
 	@Test
-	public void test() {
+	public void test2222() {
 		assertFalse(!true);
 	
 	}
