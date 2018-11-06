@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<!-- resultType = UserVo의 패키지 , 클래스명 -->
+	<select id="selectUserAll" resultType="userVo">
+		<!-- ; 붙히면 에러 -->
+		select * from jspuser
+	</select>
+
+	<select id="selectUser" resultType="userVo"
+		parameterType="string">
+		select *
+		from jspuser
+		where userid = #{userId}
+	</select>
+
+	<select id="selectUserByVo" resultType="userVo"
+		parameterType="userVo">
+		select *
+		from jspuser
+		where userid = #{userId}
+	</select>
+		<!-- #{userId} ==> Vo안에서 userId 라고 줬기 때문에 userid라고 하면 오류가뜬다. -->
+	
+	<!-- resultType :데이터베이스 결과데이터를 객체에 로드하는 방법을 정의하는 엘리먼트
+	  parameterType   -->
+	<select id="selectUserPageList" resultType="userVo"
+		parameterType="pageVo">
+		
+		select * 
+		from
+		(select rownum rnum,a.*       
+		from
+		(select jspuser.* 
+		from jspuser
+		order by userid)a)
+		where rnum between #{page}*#{pageSize}-(#{pageSize}-1)
+               and #{page}*#{pageSize}
+
+	</select>
+	
+	
+	<select id="getUserCnt" resultType="int">
+		select count (*)
+		from jspuser
+	 </select>
+
+	<!--  사용자 등록  -->
+	<insert id="insertUser" parameterType="userVo">
+		insert into jspuser 
+	 	(userId, name, pass, add1, add2, zip, email, tel, birth ,profile)
+		values (#{userId},#{name},#{pass},#{add1},#{add2},#{zip},#{email},#{tel},#{birth},#{profile,jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- 사용자 삭제 -->
+	<delete id="deleteUser" parameterType="String">
+		delete from jspuser
+		where userId = #{userId}
+	</delete>
+	
+	<!--  사용자 수정  -->
+	
+	<update id="updateUser" parameterType="userVo">
+		update jspuser
+		set name = #{name}
+		 , pass = #{pass} 
+		 , add1 = #{add1}
+		 , add2 = #{add2}
+		 , zip = #{zip}
+		 , birth = #{birth}
+		 , email = #{email}
+		 , tel = #{tel}
+		 , profile = #{profile}
+		 where userId = #{userId}
+	</update>
+</mapper>
