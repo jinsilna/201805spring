@@ -56,6 +56,4 @@ public interface UserServiceInf {
 	 */
 	int updateUser(UserVo userVo); 
 	
-	FileDaoInf getFileDao();
-
 }

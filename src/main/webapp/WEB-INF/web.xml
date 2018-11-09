@@ -52,10 +52,15 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:kr/or/ddit/config/spring/servlet-context.xml</param-value>
+			<param-value>classpath:kr/or/ddit/config/spring/servlet-context.xml
+						 classpath:kr/or/ddit/config/spring/interceptor-context.xml
+			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	
+	
 
 	<!-- Map all requests to the DispatcherServlet for handling -->
 	<servlet-mapping>
@@ -64,6 +69,13 @@
 	</servlet-mapping>
 	
 	<!-- /*가 아니고 /로 설정해줘야 된다. -->
-	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/error/500.html</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404/404.html</location>
+	</error-page>
 	
 </web-app>

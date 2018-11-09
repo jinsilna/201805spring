@@ -14,42 +14,38 @@ import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.util.model.PageVo;
 
 @Service
-public class UserService {
+public class UserService implements UserServiceInf{
 
-	//@Autowired
 	@Resource(name="userDao")
 	private UserDaoInf userDao;
-	
-	@Resource(name="fileDao")
-	private FileDaoInf fileDao;
 
-	//@Override
+	@Override
 	public List<UserVo> selectUserAll(){
 		return userDao.selectUserAll();
 	}
-	//@Override
+	@Override
 	public UserVo selectUser(String userid){
 		return userDao.selectUser(userid);
 	}
-	//@Override
+	@Override
 	public UserVo selectUserByVo(UserVo userVo){
 		return userDao.selectUserByVo(userVo);
 
 	}
-	//@Override
+	@Override
 	public int insertUser(UserVo userVo) {
 		return userDao.insertUser(userVo);
 	}
-	//@Override
+	@Override
 	public int getUserCnt() {
 		return userDao.getUserCnt();
 	}
-	//@Override
+	@Override
 	public int deleteUser(String userId) {
 		return userDao.deleteUser(userId);
 	}
 
-	//@Override
+	@Override
 	public int updateUser(UserVo userVo) {
 		return userDao.updateUser(userVo);
 	}
@@ -62,7 +58,7 @@ public class UserService {
 	 * @return
 	 * Method 설명 : 사용자 페이징 조회 
 	 */
-	//@Override
+	@Override
 	public Map<String, Object>  selectUserPageList(PageVo pageVo) {
 
 		// 페이지에 해당하는 유저 리스트 (1~10건사이)
@@ -79,9 +75,6 @@ public class UserService {
 
 		return resultMap;
 	}
-	//@Override
-	public FileDaoInf getFileDao() {
-		return fileDao;
-	}
+	
 
 }

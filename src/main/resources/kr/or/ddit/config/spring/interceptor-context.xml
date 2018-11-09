@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!--web.xml에 추가해준다.  -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="kr.or.ddit.interceptor.PerformanceCheckInterceptor"/>
+		</mvc:interceptor>
+		
+		<!-- ================================================================================================= -->
+		<!-- 파라미터를 통한 로케일 정보를 수정한다. -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+				<property name="paramName" value="lang"/>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+		<!-- localResolver :  로케일에대한 저장위치 -->
+		<bean id ="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>		
+		
+		
+	
+</beans>

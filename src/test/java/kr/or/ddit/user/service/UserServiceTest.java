@@ -32,30 +32,13 @@ public class UserServiceTest {
 	private final String TEST_USERID = "natrue";
 	
 	@Resource(name="userService")
-	private UserService userService;
+	private UserServiceInf userService;
 	
-	@Resource(name="userDao")
-	private UserDaoInf userDao;
-
 	@Before
 	public void setup(){
-		//userService.deleteUser(TEST_USERID);
+		userService.deleteUser(TEST_USERID);
 	}
 	
-	@Test
-	public void getFileDaoTest() {
-		assertNotNull(userService.getFileDao());
-	}
-	@Test
-	public void userServiceNotNullTest() {
-		assertNotNull(userService);
-		
-	}
-	
-	@Test
-	public void userDaoNotNullTest() {
-		assertNotNull(userDao);
-	}
 	
 	/* junit 실행주기 
 
@@ -86,7 +69,7 @@ public class UserServiceTest {
 	@Before
 	public void before(){
 		System.out.println("before");
-		userService = new UserService();
+		//userService = new UserService();
 	}
 	@After
 	public void after(){
@@ -95,23 +78,23 @@ public class UserServiceTest {
 
 
 	//@Test
-	public void selectUserAll(){
-		/***Given***/ 
-		/* UserDao 객체를 생성 */
+//	public void selectUserAll(){
+//		/***Given***/ 
+//		/* UserDao 객체를 생성 */
+//
+//
+//		/***When***/
+//		List<UserVo> list = userService.selectUserAll();
+//		System.out.println("list : " + list.size());
+//		System.out.println("list : " + list);
+//
+//		/***Then***/
+//		// 예상값 , 결과값 
+//		// DB에서 값 바꿔서 105가 나와야한다.
+//		//assertEquals(5, list.size());
+//	}
 
-
-		/***When***/
-		List<UserVo> list = userService.selectUserAll();
-		System.out.println("list : " + list.size());
-		System.out.println("list : " + list);
-
-		/***Then***/
-		// 예상값 , 결과값 
-		// DB에서 값 바꿔서 105가 나와야한다.
-		//assertEquals(5, list.size());
-	}
-
-	//@Test
+	@Test
 	public void selectUserTest(){
 		/***Given***/ 
 		/* UserDao 객체를 생성 */
@@ -127,7 +110,7 @@ public class UserServiceTest {
 		assertEquals("브라운", userVo.getName());
 		assertEquals("brown", userVo.getUserId());
 	}
-	//@Test
+	@Test
 	public void selectUserByVoTest(){
 
 		/***Given***/ 
@@ -146,7 +129,7 @@ public class UserServiceTest {
 		// 예상값 , 결과값 
 		assertEquals("brown", userVo.getUserId());
 	}
-	//@Test
+	@Test
 	public void slectUserPageListTest(){
 
 		PageVo pagevo = new PageVo();
@@ -170,7 +153,7 @@ public class UserServiceTest {
 	 * 변경이력 :
 	 * Method 설명 : 사용자 전체 건수 조회 테스트 
 	 */
-	//@Test
+	@Test
 	public void getUserCntTest(){
 		
 		/***Given***/
@@ -180,10 +163,10 @@ public class UserServiceTest {
 		int totalUserCnt = userService.getUserCnt();
 		
 		/***Then***/
-		assertEquals(107, totalUserCnt);
+		assertEquals(106, totalUserCnt);
 	}
 	
-	//@Test
+	@Test
 	public void insertUserTest(){
 		
 		/***Given***/

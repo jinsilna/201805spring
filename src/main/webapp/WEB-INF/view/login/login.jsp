@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>login.jsp</title>
-<%@include file="/common/basiclb.jsp"%>
+<%@include file="../common/basiclb.jsp"%>
 <script type="text/javascript">
 </script>
 <%-- signin.css가져오기 // 위에 처럼 include로 가져올 수 없다. --%>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<!--DOCTYPE : https://tiles.apache.org/framework/tiles-core/dtddoc/index.html 에서 복사/붙혀넣기 -->
+<tiles-definitions>
+	<definition name="basicLayout" template="/WEB-INF/view/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/common/header.jsp"/>
+		<put-attribute name="left" value="/WEB-INF/view/common/left.jsp"/>
+		<put-attribute name="content" value=""/>
+	</definition>
+	
+	<!-- 오류 났던 이유 : definition name="basicLayout" 이랑 definition name="main" extends="basicLayout" 대소문자를 다르게 함  -->
+	<definition name="main" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/main.jsp"/>
+	</definition>
+	
+	<!-- name은 userController에서 줬던 return 값과동일하게 준다. -->
+	<definition name="user/userAllList" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userAllList.jsp"/>
+	</definition>
+	
+	<definition name="user/userPageList" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userPageList.jsp"/>
+	</definition>
+	
+	<definition name="user/userDetail" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userDetail.jsp"/>
+	</definition>
+	
+	<definition name="user/userForm" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userForm.jsp"/>
+	</definition>
+	
+	<definition name="user/userUpdate" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userUpdate.jsp"/>
+	</definition>
+	
+</tiles-definitions>

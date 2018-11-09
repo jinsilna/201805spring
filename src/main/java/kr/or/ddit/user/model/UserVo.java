@@ -1,3 +1,4 @@
+
 package kr.or.ddit.user.model;
 
 import java.text.SimpleDateFormat;
@@ -5,6 +6,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class UserVo implements HttpSessionBindingListener{
 	private String userId;
@@ -15,10 +18,16 @@ public class UserVo implements HttpSessionBindingListener{
 	private String zip;
 	private String email;
 	private String tel;
-	private Date birth;
 	private String profile;
 	private String alias;
 	private int    rnum;
+	
+	//----------------------------------------
+	//생일 :  년 월 일 
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date birth;
+	//----------------------------------------
+	
 
 	public int getRnum() {
 		return rnum;
@@ -113,19 +122,16 @@ public class UserVo implements HttpSessionBindingListener{
 		this.birth = birth;
 	}
 
-	public String getBirthRomat(Date birth){
-		SimpleDateFormat fomat = new SimpleDateFormat("yyyy-MM-dd");
-		String toDate = fomat.format(birth);
-		return toDate;
+	public String getFormattedBirth(){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(birth);
 	}
 
 	@Override
 	public String toString() {
-		return "UserVo [userId=" + userId + ", name=" + name + ", pass=" + pass
-				+ ", add1=" + add1 + ", add2=" + add2 + ", zip=" + zip
-				+ ", email=" + email + ", tel=" + tel + ", birth=" + birth
-				+ ", profle=" + profile + ", alias=" + alias + ", rnum=" + rnum
-				+ "]";
+		return "UserVo [userId=" + userId + ", name=" + name + ", pass=" + pass + ", add1=" + add1 + ", add2=" + add2
+				+ ", zip=" + zip + ", email=" + email + ", tel=" + tel + ", profile=" + profile + ", alias=" + alias
+				+ ", rnum=" + rnum + ", birth=" + birth + "]";
 	}
 
 	/**

@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertUser" parameterType="userVo">
 		insert into jspuser 
 	 	(userId, name, pass, add1, add2, zip, email, tel, birth ,profile)
-		values (#{userId},#{name},#{pass},#{add1},#{add2},#{zip},#{email},#{tel},#{birth},#{profile,jdbcType=VARCHAR})
+		values (#{userId},#{name},#{pass},#{add1},#{add2},#{zip},#{email},#{tel},#{birth},#{profile, jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- 사용자 삭제 -->
@@ -73,7 +73,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 , birth = #{birth}
 		 , email = #{email}
 		 , tel = #{tel}
-		 , profile = #{profile}
+		 <if test="profile != null">,profile = #{profile, jdbcType=VARCHAR} </if>
 		 where userId = #{userId}
 	</update>
 </mapper>

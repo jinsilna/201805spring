@@ -83,6 +83,7 @@ public class HelloController {
 		return "hello";
 		
 	}
+	
 	@RequestMapping("/request")
 	public String request(HttpServletRequest request, Model model) {
 		String userId = request.getParameter("userId");
@@ -96,6 +97,7 @@ public class HelloController {
 		
 		return "hello";
 	}
+	
 	
 	//value object의 속성이름과 동일한 이름의 파라미터를 자동으로 설정해준다.
 	@RequestMapping("/vo")
@@ -144,6 +146,11 @@ public class HelloController {
 		writer.write("<html>");
 		writer.write("spring void method");
 		writer.write("</html>");
+	}
+	
+	@RequestMapping("/exception")
+	public String view() {
+		throw new ArithmeticException();
 	}
 }
 

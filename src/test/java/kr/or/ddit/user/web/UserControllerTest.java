@@ -87,7 +87,7 @@ public class UserControllerTest extends ControllerTestConfig{
 		/***Then***/
 		assertEquals("login/login", viewName);
 	}
-
+	
 }
 
 
