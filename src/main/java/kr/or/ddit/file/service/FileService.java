@@ -28,8 +28,20 @@ public class FileService implements FileServiceInf{
 	 * Method 설명 : 파일 정보 저장 (insert)
 	 */
 	@Override
-	public int insertFile(FileVo fileVo) {
-		return fileDao.insertFile(fileVo);
+	public int insertFile(FileVo fileVo){
+		int insertfile = fileDao.insertFile(fileVo);
+		return insertfile;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+

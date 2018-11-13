@@ -14,7 +14,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 <title>spring</title>
-<%@include file="../common/basiclb.jsp"%>
+<%@include file="../common/basiclib.jsp"%>
 </head>
 <body>
 <!-- tiles-config.xml에서 만들어줬던 header : name값으로 넣어준다. -->

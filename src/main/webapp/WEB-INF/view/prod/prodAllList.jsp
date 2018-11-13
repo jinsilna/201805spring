@@ -16,7 +16,7 @@
 <link rel="icon" href="../../favicon.ico">
 <title>boardAllList.jsp</title>
 <%-- basiclb --%>
-<%@include file="../common/basiclb.jsp"%>
+<%@include file="../common/basiclib.jsp"%>
 </head>
 <body>
 	<%-- header --%>

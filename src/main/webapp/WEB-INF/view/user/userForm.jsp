@@ -21,7 +21,7 @@
 
 <title>userDetail.jsp</title>
 <%-- basiclb --%>
-<%@include file="../common/basiclb.jsp"%>
+<%@include file="../common/basiclib.jsp"%>
 <%UserVo uservo = (UserVo) request.getAttribute("userVo");%>
 </head>
 <body>

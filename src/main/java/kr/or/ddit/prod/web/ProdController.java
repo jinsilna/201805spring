@@ -87,6 +87,7 @@ public class ProdController {
 		ProdVo prodVo = prodService.selectBoard(prod_id);
 		
 		model.addAttribute("prodVo",prodVo);
+		
 		return "prod/prodDetail";
 	}
 	

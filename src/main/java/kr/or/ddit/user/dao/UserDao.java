@@ -2,64 +2,39 @@ package kr.or.ddit.user.dao;
 
 import java.util.List;
 
-import kr.or.ddit.config.db.SqlFactoryBuilder;
+import javax.annotation.Resource;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
+
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.util.model.PageVo;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.stereotype.Repository;
-
 @Repository
 public class UserDao implements UserDaoInf{
-		
+	
+	@Resource(name="sqlSessionTemplate")
+	private SqlSessionTemplate sqlSessionTemplate;
+	
 	// jspuser 테이블 데이터 전체 조회 
 	// Map이 아니고 List로 
 	public List<UserVo> selectUserAll(){
-		
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();	
-		SqlSession session = factory.openSession();
-		// selectOne : 데이터가 한건일때 사용하는것.
-		// selectList : 데이터가 여러건일때
-		// 메소드 인자  :  문자열 = 네임스페이스( 모듈명 )  , 쿼리 아이디 ( 쿼리) 
-		List<UserVo>  userList = session.selectList("user.selectUserAll");
-		session.close();   //위에서 사용한 session객체를 닫아준다.
-		return userList;
+		return sqlSessionTemplate.selectList("user.selectUserAll");
 	}
 
 	public UserVo selectUser(String userid){
+		return sqlSessionTemplate.selectOne("user.selectUser",userid);
 		
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();	
-		SqlSession session = factory.openSession();
-		// selectOne : 데이터가 한건일때 사용하는것.
-		// selectList : 데이터가 여러건일때
-		// 메소드 인자  :  문자열 = 네임스페이스( 모듈명 )  , 쿼리 아이디 ( 쿼리) 
-		UserVo uservo = session.selectOne("user.selectUser",userid);
-		session.close();
-		return uservo;
 	}
 	
 	public UserVo selectUserByVo(UserVo userVo){
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();	
-		SqlSession session = factory.openSession();
-		// selectOne : 데이터가 한건일때 사용하는것.
-		// selectList : 데이터가 여러건일때
-		// 메소드 인자  :  문자열 = 네임스페이스( 모듈명 )  , 쿼리 아이디 ( 쿼리) 
-		UserVo uservo = session.selectOne("user.selectUserByVo",userVo);
-		session.close(); 
-		return uservo;		
+		return sqlSessionTemplate.selectOne("user.selectUserByVo",userVo);
+		
 	}
 
 	@Override
 	public List<UserVo> selectUserPageList(PageVo pageVo) {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-		// selectOne : 데이터가 한건일때 사용하는것.
-		// selectList : 데이터가 여러건일때
-		// 메소드 인자  :  문자열 = 네임스페이스( 모듈명 )  , 쿼리 아이디 ( 쿼리) 
-		List<UserVo> userList = session.selectList("user.selectUserPageList",pageVo);
-		session.close();
-		return userList;
+		return sqlSessionTemplate.selectList("user.selectUserPageList",pageVo);
 	}
 
 	/**
@@ -71,15 +46,7 @@ public class UserDao implements UserDaoInf{
 	 */
 	@Override
 	public int getUserCnt() {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-		// selectOne : 데이터가 한건일때 사용하는것.
-		// selectList : 데이터가 여러건일때
-		// 메소드 인자  :  문자열 = 네임스페이스( 모듈명 )  , 쿼리 아이디 ( 쿼리) 
-		int totalUserCnt= session.selectOne("user.getUserCnt");
-		session.close();
-		
-		return totalUserCnt;
+		return sqlSessionTemplate.selectOne("user.getUserCnt");
 	}
 
 	/**
@@ -92,15 +59,7 @@ public class UserDao implements UserDaoInf{
 	 */
 	@Override
 	public int insertUser(UserVo userVo) {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-	
-		int insertUserCnt = session.insert("user.insertUser",userVo);
-		
-		session.commit(); // 커밋 반드시
-		session.close();
-	
-		return insertUserCnt;
+		return sqlSessionTemplate.insert("user.insertUser",userVo);
 	}
 
 	/**
@@ -113,15 +72,8 @@ public class UserDao implements UserDaoInf{
 	 */
 	@Override
 	public int deleteUser(String userId) {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-		
-		int deleteUserCnt = session.delete("user.deleteUser",userId);
-		
-		session.commit(); // 커밋 반드시
-		session.close();
+		return sqlSessionTemplate.delete("user.deleteUser",userId);
 	
-		return deleteUserCnt;
 	}
 	
 
@@ -135,18 +87,6 @@ public class UserDao implements UserDaoInf{
 	 */
 	@Override
 	public int updateUser(UserVo userVo) {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-		
-		int updateUserCnt = session.update("user.updateUser",userVo);
-		session.commit();
-		session.close();
-		
-		return updateUserCnt;
+		return sqlSessionTemplate.update("user.updateUser",userVo);
 	}
-
-
-	
-	
-
 }

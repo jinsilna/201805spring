@@ -18,7 +18,8 @@ import kr.or.ddit.board.model.BoardVo;
 import kr.or.ddit.board.service.BoardServiceInf;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:kr/or/ddit/ioc/application-context-scan.xml"})
+@ContextConfiguration(locations={"classpath:kr/or/ddit/ioc/application-context-scan.xml",
+		"classpath:kr/or/ddit/config/spring/datasource-context.xml"})
 public class ComponentScanTest {
 
 	// class 정보를 가져오기위해서 .class 

@@ -11,10 +11,17 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.ddit.file.model.FileVo;
-import kr.or.ddit.test.ServiceDaoConfig;
+import kr.or.ddit.test.ServiceDaoTestConfig;
 
-public class FileDaoTest extends ServiceDaoConfig{
+public class FileDaoTest extends ServiceDaoTestConfig{
 
+	/* **********************************************************************************
+	 
+		  Test코드 오류났던이유는? 
+		  ServiceDaoConfig.java 파일에 
+		  "classpath:kr/or/ddit/config/spring/datasource-context.xml" 를 추가해줘야한다.
+		  
+	 *************************************************************************************/
 	// jsp와 다르게 new 연산자 X --> @Resource로 주입을 받는다.
 	@Resource(name="fileDao")
 	private FileDaoInf fileDao;

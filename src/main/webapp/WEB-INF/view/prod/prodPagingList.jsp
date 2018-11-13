@@ -16,7 +16,7 @@
 <link rel="icon" href="../../favicon.ico">
 <title>boardPagingList.jsp</title>
 <%-- basiclb --%>
-<%@include file="../common/basiclb.jsp"%>
+<%@include file="../common/basiclib.jsp"%>
 <!-- cursor pointer : 손가락 모양으로바뀜 -->
 <style type="text/css">
 	.userClick{

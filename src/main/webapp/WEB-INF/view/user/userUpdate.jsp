@@ -8,7 +8,7 @@
 <!--  tiles-config.xml 에서 tiles-definitions 을 정해줬으니깐 여기서 간추릴?수 있다. -->
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <head>
-<%@include file="../common/basiclb.jsp"%>
+<%@include file="../common/basiclib.jsp"%>
 
 <!-- jquery ui API  -->
 <link rel="stylesheet"

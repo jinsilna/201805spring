@@ -28,6 +28,13 @@ public class UserVo implements HttpSessionBindingListener{
 	private Date birth;
 	//----------------------------------------
 	
+	// 인자가있는 생성자를 만든이유?
+	// AjaxController에서 사용한다.
+	public UserVo(String userId, String name) {
+		this.userId = userId;
+		this.name = name;
+	}
+	
 
 	public int getRnum() {
 		return rnum;
@@ -123,8 +130,12 @@ public class UserVo implements HttpSessionBindingListener{
 	}
 
 	public String getFormattedBirth(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		return sdf.format(birth);
+		if(birth != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			return sdf.format(birth);			
+		}else {
+			return "";
+		}
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import kr.or.ddit.file.dao.FileDaoInf;
-import kr.or.ddit.test.ServiceDaoConfig;
+import kr.or.ddit.test.ServiceDaoTestConfig;
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.util.model.PageVo;
 
@@ -18,7 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.stereotype.Repository;
 
-public class UserDaoTest extends ServiceDaoConfig{
+public class UserDaoTest extends ServiceDaoTestConfig{
 	
 	/*
 	   원래는 new 연산자를 통해 불러왔지만 
@@ -49,7 +49,7 @@ public class UserDaoTest extends ServiceDaoConfig{
 		
 		/***Then***/
 		           // 예상값 , 결과값 
-		assertEquals(106, list.size());
+		assertEquals(118, list.size());
 	}
 	
 	@Test
@@ -63,7 +63,7 @@ public class UserDaoTest extends ServiceDaoConfig{
 		/***Then***/
 		// 예상값 , 결과값 
 		assertNotNull(userVo);
-		assertEquals("브라운", userVo.getName());
+		assertEquals("비라운", userVo.getName());
 		assertEquals("brown", userVo.getUserId());
 	}
 	@Test
@@ -79,7 +79,7 @@ public class UserDaoTest extends ServiceDaoConfig{
 		/***Then***/
 	
 		assertNotNull(userVo);
-		assertEquals("브라운", userVo.getName());
+		assertEquals("비라운", userVo.getName());
 		// 예상값 , 결과값 
 		assertEquals("brown", userVo.getUserId());
 	}
@@ -114,7 +114,7 @@ public class UserDaoTest extends ServiceDaoConfig{
 		int totalUserCnt = userDao.getUserCnt();
 		
 		/***Then***/
-		assertEquals(106, totalUserCnt);
+		assertEquals(118, totalUserCnt);
 	}
 	
 	

@@ -10,7 +10,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import kr.or.ddit.test.ServiceDaoConfig;
+import kr.or.ddit.test.ServiceDaoTestConfig;
 import kr.or.ddit.user.dao.UserDaoInf;
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.util.model.PageVo;
@@ -26,7 +26,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 //service, dao에 대한 설정파일만 필요하다.
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations= {"classpath:kr/or/ddit/config/spring/root-context.xml"})
+@ContextConfiguration(locations= {"classpath:kr/or/ddit/config/spring/root-context.xml",
+								"classpath:kr/or/ddit/config/spring/datasource-context.xml"})
 public class UserServiceTest {
 	
 	private final String TEST_USERID = "natrue";
@@ -107,7 +108,7 @@ public class UserServiceTest {
 		// 예상값 , 결과값 
 
 		assertNotNull(userVo);
-		assertEquals("브라운", userVo.getName());
+		assertEquals("비라운", userVo.getName());
 		assertEquals("brown", userVo.getUserId());
 	}
 	@Test
@@ -125,7 +126,7 @@ public class UserServiceTest {
 		assertNotNull(userVo);
 		
 		
-		assertEquals("브라운", userVo.getName());
+		assertEquals("비라운", userVo.getName());
 		// 예상값 , 결과값 
 		assertEquals("brown", userVo.getUserId());
 	}
@@ -145,7 +146,7 @@ public class UserServiceTest {
 		
 		//	assertEquals(1, pagevo.getPage());
 		assertEquals(10, userList.size());
-		assertEquals(11, pageCnt);
+		assertEquals(12, pageCnt);
 	}
 	/**
 	 * Method : getUserCntTest
@@ -163,7 +164,7 @@ public class UserServiceTest {
 		int totalUserCnt = userService.getUserCnt();
 		
 		/***Then***/
-		assertEquals(106, totalUserCnt);
+		assertEquals(118, totalUserCnt);
 	}
 	
 	@Test

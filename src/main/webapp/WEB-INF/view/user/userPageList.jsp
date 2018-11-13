@@ -18,7 +18,7 @@
 <link rel="icon" href="../../favicon.ico">
 <title>userPageList</title>
 <%-- basiclb --%>
-<%@include file="../common/basiclb.jsp"%>
+<%@include file="../common/basiclib.jsp"%>
 <!-- cursor pointer : 손가락 모양으로바뀜 -->
 <style type="text/css">
 .userClick {
@@ -93,6 +93,9 @@ function getUserList(page){
 	// ajax, call
 	// 사용자 리스트 데이터만 가져오기 
 	// html(기존방식) --> json(바뀌는 방식) 데이터를 받는 형태로 변경한다.
+	
+	
+	// parameter --> json 
 	$.ajax({
 		type : "GET",
 		url : "/user/userPageListAjax",

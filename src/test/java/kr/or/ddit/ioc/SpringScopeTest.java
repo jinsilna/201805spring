@@ -12,7 +12,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import kr.or.ddit.board.dao.BoardDaoInf;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations= {"classpath:kr/or/ddit/ioc/application-context.xml"})
+@ContextConfiguration(locations= {"classpath:kr/or/ddit/ioc/application-context.xml",
+		"classpath:kr/or/ddit/config/spring/datasource-context.xml"})
 public class SpringScopeTest {
 
 	// DI dependency ...

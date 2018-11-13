@@ -16,7 +16,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 <title>boardCreate.jsp</title>
-<%@include file="../common/basiclb.jsp"%>
+<%@include file="../common/basiclib.jsp"%>
 <!-- 상대경로로../ -->
 </head>
 <body>

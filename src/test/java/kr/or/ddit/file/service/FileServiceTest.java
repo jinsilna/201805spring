@@ -7,8 +7,8 @@ import javax.annotation.Resource;
 import org.junit.Test;
 
 import kr.or.ddit.file.model.FileVo;
-import kr.or.ddit.test.ServiceDaoConfig;
-public class FileServiceTest extends ServiceDaoConfig{
+import kr.or.ddit.test.ServiceDaoTestConfig;
+public class FileServiceTest extends ServiceDaoTestConfig{
 
 	@Resource(name="fileService")
 	private FileServiceInf fileService;

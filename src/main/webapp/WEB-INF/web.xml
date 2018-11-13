@@ -10,6 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 	
+	
 	<!-- encoding filter -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -37,7 +38,13 @@
 	<!-- needed for ContextLoaderListener -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:kr/or/ddit/config/spring/root-context.xml</param-value>
+		<param-value>classpath:kr/or/ddit/config/spring/root-context.xml
+					 classpath:kr/or/ddit/config/spring/aop-context.xml
+					 classpath:kr/or/ddit/config/spring/datasource-context.xml
+					 classpath:kr/or/ddit/config/spring/transaction-context.xml
+					 classpath:kr/or/ddit/config/spring/util-context.xml
+		</param-value>
+	
 	</context-param>
 
 	<!-- Bootstraps the root web application context before servlet initialization -->
@@ -58,9 +65,6 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
-	
-	
 
 	<!-- Map all requests to the DispatcherServlet for handling -->
 	<servlet-mapping>

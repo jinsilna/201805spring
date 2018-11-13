@@ -11,7 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:kr/or/ddit/ioc/application-context-placeholder.xml"})
+@ContextConfiguration(locations={"classpath:kr/or/ddit/ioc/application-context-placeholder.xml",
+		"classpath:kr/or/ddit/config/spring/datasource-context.xml"})
 public class PlaceHolderTest {
 
 	@Resource(name="placeholder")
